@@ -1,4 +1,4 @@
-# Tweet Phrase ===
+# Tweet Phrase
 
 Contributors: andrearufo
 Tags: tweet, twitter, share, shortcode
@@ -10,19 +10,20 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 A simple Wordpress plugin for tweet a single phrase with a click!
 
-== Description ==
+## Description
 Using the shortcode *[tweet] ... [/tweet]* allow your site users to click on a link that post the content of the shortcode on twitter. Really simple to use, with a modern style for the links and some options.
 
-== Installation ==
+## Installation
 Just download the plugin and put it on the /wp-content/plugins directory of you Wordpress installation.
 
-== Frequently Asked Questions ==
-* Is Twitter API or login required? No
+## Frequently Asked Questions
+- Is Twitter API or login required? __No__
 
-== Changelog ==
-## Ver. 0.1
+## Changelog
+
+### Ver. 0.1
 - Inizalization of the plugin
 
-## Ver. 0.2
+### Ver. 0.2
 - Option page
 - Convert special characters to the link
