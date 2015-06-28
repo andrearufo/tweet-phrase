@@ -5,7 +5,7 @@
 	Plugin Name: Tweet Phrase
 	Plugin URI:  http://www.orangedropdesign.com
 	Description: A simple Wordpress plugin for tweet a single phrase with a click!
-	Version:     0.1
+	Version:     0.2
 	Author:      Andrea Rufo
 	Author URI:  http://www.orangedropdesign.com
 	License:     GPL2
@@ -23,12 +23,14 @@ function tweet_phrase_shortcode( $atts, $content = "" ) {
 	
 	$options = get_option( 'tweet_phrase_settings' );
 	
+	echo '<pre>'.print_r($options, 1).'</pre>';
+	
 	$text = '';
 	
 	if( isset($options['tweet_phrase_text_before']) )
 		$text .= $options['tweet_phrase_text_before'];
 	
-					$text .= $content; // space? %20
+	$text .= $content; // space? %20
 	
 	if( $options['tweet_phrase_text_after'] )
 		$text .= $options['tweet_phrase_text_after'];
@@ -37,9 +39,9 @@ function tweet_phrase_shortcode( $atts, $content = "" ) {
 		$text .= ' ' . get_the_permalink();
 	
 	if( isset($options['tweet_phrase_text_username']) )
-		$text .= ' via @'.$options['tweet_phrase_text_username'];
+		$text .= ' via @' . $options['tweet_phrase_text_username'];
 	
-	return '<a title="Click and share on your Twitter!" target="_blank" href="https://twitter.com/intent/tweet?text=' . $text . '" class="tweet-phrase">' . $content . ' <i class="fa fa-twitter"></i></a>';
+	return '<a title="Click and share on your Twitter!" target="_blank" href="https://twitter.com/intent/tweet?text=' . htmlspecialchars($text) . '" class="tweet-phrase">' . $content . ' <i class="fa fa-twitter"></i></a>';
 
 }
 
