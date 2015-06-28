@@ -23,8 +23,6 @@ function tweet_phrase_shortcode( $atts, $content = "" ) {
 	
 	$options = get_option( 'tweet_phrase_settings' );
 	
-	echo '<pre>'.print_r($options, 1).'</pre>';
-	
 	$text = '';
 	
 	if( isset($options['tweet_phrase_text_before']) )
