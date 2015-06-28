@@ -23,21 +23,23 @@ function tweet_phrase_shortcode( $atts, $content = "" ) {
 	
 	$options = get_option( 'tweet_phrase_settings' );
 	
-	$text = '';
+		$text_parts = array();
 	
 	if( isset($options['tweet_phrase_text_before']) )
-		$text .= $options['tweet_phrase_text_before'];
+		$text_parts[] = trim($options['tweet_phrase_text_before']);
 	
-	$text .= $content; // space? %20
+	$text_parts[] = trim($content); // space? %20
 	
 	if( $options['tweet_phrase_text_after'] )
-		$text .= $options['tweet_phrase_text_after'];
+		$text_parts[] = trim($options['tweet_phrase_text_after']);
 	
 	if( $options['tweet_phrase_checkbox_getlink'] )
-		$text .= ' ' . get_the_permalink();
+		$text_parts[] = get_the_permalink();
 	
 	if( isset($options['tweet_phrase_text_username']) )
-		$text .= ' via @' . $options['tweet_phrase_text_username'];
+		$text_parts[] = 'via @' . trim($options['tweet_phrase_text_username']);
+	
+	$text = join(' ', $text_parts);
 	
 	return '<a title="Click and share on your Twitter!" target="_blank" href="https://twitter.com/intent/tweet?text=' . htmlspecialchars($text) . '" class="tweet-phrase">' . $content . ' <i class="fa fa-twitter"></i></a>';
 
