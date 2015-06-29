@@ -39,7 +39,7 @@ function tweet_phrase_shortcode( $atts, $content = "" ) {
 	if( isset($options['tweet_phrase_text_username']) )
 		$text_parts[] = 'via @' . trim($options['tweet_phrase_text_username']);
 	
-	$text = join(' ', $text);
+	$text = join(' ', $text_parts);
 	
 	return '<a title="Click and share on your Twitter!" target="_blank" href="https://twitter.com/intent/tweet?text=' . htmlspecialchars($text) . '" class="tweet-phrase">' . $content . ' <i class="fa fa-twitter"></i></a>';
 
@@ -52,15 +52,15 @@ function tweet_phrase_register_shortcode() {
 add_action( 'init', 'tweet_phrase_register_shortcode' );
 
 // multilingual
-load_plugin_textdomain('tweet_phrase', false, basename( dirname( __FILE__ ) ) . '/languages' );
+load_plugin_textdomain( 'tweet_phrase', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
-//style
+// style
 function tweet_phrase_styles_method() {
 	
     $plugin_url = plugin_dir_url( __FILE__ );
 
     wp_enqueue_style( 'tweet-phrase', $plugin_url . 'tweet-phrase.css' );
-    wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+    wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' );
     
 }
 add_action( 'wp_enqueue_scripts', 'tweet_phrase_styles_method' );
